@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Map from '@/components/Map';
+import HutMap from '@/components/HutMap';
+import Dialog from '@/components/Dialog';
 
 Vue.use(Router);
 
@@ -8,8 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Map',
-      component: Map
+      name: 'HutMap',
+      component: HutMap
+    },
+    {
+      path: '/dialog',
+      name: 'Dialog',
+      component: Dialog
     }
   ]
 });

@@ -62,6 +62,7 @@
           <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
         </v-list-tile>
       </v-list>
+      <p>Contents of Navigation Drawer?</p>
     </v-navigation-drawer>
     <v-footer :fixed="fixed" app>
       <span>&copy; 2018 Brandon Johnson</span>
