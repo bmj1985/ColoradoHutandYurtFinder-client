@@ -1,11 +1,11 @@
 <template>
   <div>
    <gmap-map id="map" :center="center" :zoom="9" :mapTypeId="mapTypeId">
-      <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
-      <HutInfo :marker="marker"/>
-      </gmap-info-window>
-      <gmap-marker :key="i" v-for="(m,i) in markers" :position="m.position" :clickable="true" @click="toggleInfoWindow(m,i)"></gmap-marker>
-       </gmap-marker>
+      <gmap-marker :key="i" v-for="(m,i) in markers" :position="m.position" :clickable="true" @click="toggleInfoWindow(m,i)">
+         <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+         <HutInfo :m="m"/>
+          </gmap-info-window>
+      </gmap-marker>
     </gmap-map>
   </div>
 </template>
@@ -24,22 +24,7 @@ export default {
         lat: 39.3689,
         lng: -106.3868
       },
-      infoContent: '',
-      infoWindowPos: {
-        lat: 0,
-        lng: 0
-      },
-      infoWinOpen: false,
-      currentMidx: null,
-      //optional: offset infowindow so it visually sits nicely on top of our marker
-      infoOptions: {
-        pixelOffset: {
-          width: 0,
-          height: -35
-        }
-      },
       markers: [],
-      infoContent: '',
       infoWindowPos: {
         lat: 0,
         lng: 0
@@ -51,8 +36,8 @@ export default {
         pixelOffset: {
           width: 0,
           height: -35
+          }
         }
-      }
     };
   },
   watch: {
@@ -132,9 +117,9 @@ export default {
           PROPERTY_IS_ADA_COMPLIANT:	hut.PROPERTY_IS_ADA_COMPLIANT,
       }))
     },
-    toggleInfoWindow: function(marker, idx) {
+       toggleInfoWindow: function(marker, idx) {
+         console.log("index",idx)
       this.infoWindowPos = marker.position;
-      this.infoContent = marker.infoText;
       //check if its the same marker that was selected if yes toggle
       if (this.currentMidx == idx) {
         this.infoWinOpen = !this.infoWinOpen;
