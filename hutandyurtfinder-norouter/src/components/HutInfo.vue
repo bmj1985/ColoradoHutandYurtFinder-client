@@ -1,22 +1,23 @@
 <template>
 <div>
   <ul>
-<li><p>{{m.HutName}}</p></li>
-<li><p>{{m.Description}}</p></li>
+<li><p>{{hut.HutName}}</p></li>
+<li><p>{{hut.Description}}</p></li>
+<li><p><a :href="hut.Booking_Url">{{hut.Booking_Url}}</a></p></li>
+<li><p>{{hut.Description}}</p></li>
+<li><p>{{hut.Description}}</p></li>
+<li><p>{{hut.Description}}</p></li>
 </ul>
-<p>TEST TEST TEST</p>
 </div>
 </template>
 
 <script>
   export default {
     name: 'HutInfo',
-    props: ['m'],
+    props: ['hut'],
     mounted() {
-      this.logHut();
     },
     methods: {
-     
     }
   }
 </script>
