@@ -29,9 +29,9 @@
       :clipped-left="clipped"
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
+      <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
+      </v-btn> -->
       <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>web</v-icon>
       </v-btn>
@@ -40,17 +40,16 @@
       </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>menu</v-icon>
-      </v-btn>
+       <v-btn>Submit New Hut</v-btn>
+       <v-btn>Edit Current Hut</v-btn>
+       <v-btn>About</v-btn>
     </v-toolbar>
-    <main>
-    <v-content>
-      <router-view/>
-    </v-content>
-    </main>
+      <router-view></router-view>
     <v-footer :fixed="fixed" app>
-      <span>&copy; 2018 Brandon Johnson</span>
+      <span id="copyright">&copy; 2018 Brandon Johnson</span>
+      <span><ul class="linkwrapper">
+        </ul>
+        </span>
     </v-footer>
   </v-app>
 </template>
@@ -65,15 +64,36 @@ export default {
       items: [
         {
           icon: 'bubble_chart',
-          title: 'Inspire'
+          title: 'Hut Sorting Criteria'
         }
       ],
       miniVariant: false,
       right: true,
-      rightDrawer: false,
-      title: 'Colorado Hut and Yurt Finder'
+      title: 'Colorado Hut and Yurt Finder',
+      newHut: false
     };
   },
   name: 'App'
 };
 </script>
+<style scoped>
+router-view {
+  height: 100vh;
+  width: 100vw;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+#copyright {
+  margin-left: 2vw;
+}
+.linkwrapper {
+  margin-right: 2vw;
+}
+
+.links {
+  display: inline;
+}
+</style>
+

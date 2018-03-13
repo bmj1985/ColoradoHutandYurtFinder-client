@@ -1,26 +1,32 @@
 <template>
   <div>
-   <gmap-map :center="center" :zoom="12" style="width: 100vw; height: 100vh">
-      <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
-        {{infoContent}}
-      </gmap-info-window>
-      <gmap-marker :key="i" v-for="(m,i) in markers" :position="m.position" :clickable="true" @click="toggleInfoWindow(m,i)"></gmap-marker>
+   <gmap-map id="map" :center="center" :zoom="9" :mapTypeId="mapTypeId" gestureHandling="cooperative">
+        <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+         <HutInfo :hut="hut"/>
+          </gmap-info-window>
+      <gmap-marker :key="i" v-for="(m,i) in markers" :position="m.position" :clickable="true" @click="toggleInfoWindow(m,i)">
+      </gmap-marker>
     </gmap-map>
   </div>
 </template>
 
 <script>
-import Dialog from '@/components/Dialog';
+import HutInfo from '@/components/HutInfo';
 export default {
   name: 'HutMap',
+  components: { HutInfo },
   data() {
     return {
-      dialog: false,
+      hutAPI_Url: 'https://coloradohutandyurtfinder.herokuapp.com/huts',
+      huts: [],
+      hut: {},
+      mapTypeId: 'terrain',
+
       center: {
         lat: 39.3689,
         lng: -106.3868
       },
-      infoContent: '',
+      markers: [],
       infoWindowPos: {
         lat: 0,
         lng: 0
@@ -33,44 +39,119 @@ export default {
           width: 0,
           height: -35
         }
-      },
-      markers: [
-        {
-          position: {
-            lat: 39.3689,
-            lng: -106.3868
-          },
-          infoText: 'Marker 1'
-        },
-        {
-          position: {
-            lat: 39.374592,
-            lng: -106.548867
-          },
-          infoText: 'Marker 2'
-        },
-        {
-          position: {
-            lat: 39.379592,
-            lng: -106.549867
-          },
-          infoText: this.Dialog
-        }
-      ]
+      }
     };
   },
+  mounted() {
+    this.getDataFromDatabase();
+  },
+  watch: {
+    huts(huts) {
+      if (this.huts.length > 1) {
+        this.createMarkers();
+      }
+    }
+  },
   methods: {
+    getDataFromDatabase() {
+      fetch(this.hutAPI_Url)
+        .then(response => response.json())
+        .then(response => {
+          this.huts = response.hutsAndYurts;
+        });
+    },
+    mapHuts() {
+      huts.map(hut => {
+        this.hut = hut;
+      });
+    },
+    parseHutLocation() {
+      this.huts.map(hut => {
+        if (hut.Location.length == 0) {
+          hut.Location = [
+            38.31 - 1.5 * Math.random(),
+            -102.04 - 1.5 * Math.random()
+          ];
+        }
+        console.log(hut);
+      });
+    },
+    createMarkers() {
+      this.parseHutLocation();
+      this.markers = this.huts.map(hut => ({
+        position: {
+          lat: parseFloat(hut.Location[0]),
+          lng: parseFloat(hut.Location[1])
+        },
+        infoText: hut.Description,
+        id: hut.id,
+        HutName: hut.HutName,
+        Elevation: hut.Elevation,
+        Trailhead_Elevation: hut.Trailhead_Elevation,
+        Elevation_Gain_From_Trailhead: hut.Elevation_Gain_From_Trailhead,
+        Location: hut.Location,
+        Distance_From_Trailhead: hut.Distance_From_Trailhead,
+        Distance_From_Nearest_Hut: hut.Distance_From_Nearest_Hut,
+        Estimated_Time_In: hut.Estimated_Time_In,
+        Estimated_Time_Out: hut.Estimated_Time_Out,
+        Contact_Number: hut.Contact_Number,
+        Description: hut.Description,
+        Booking_Url: hut.Booking_Url,
+        Cost_Per_Person: hut.Cost_Per_Person,
+        Summer_Capacity: hut.Summer_Capacity,
+        Winter_Capacity: hut.Winter_Capacity,
+        Seasons_Open: hut.Seasons_Open,
+        Minimum_No_of_Spaces: hut.Minimum_No_of_Spaces,
+        Dogs_Allowed: hut.Dogs_Allowed,
+        Gear_Delivery: hut.Gear_Delivery,
+        WINTER_Water_Snowmelt: hut.WINTER_Water_Snowmelt,
+        WINTER_Water_Cistern_non_potable: hut.WINTER_Water_Cistern_non_potable,
+        WINTER_Water_Running_water_potable: false,
+        WINTER_Water_Spring_stream_lake_non_potable: false,
+        Suggested_SUMMER_Vehicle_Access: hut.Suggested_SUMMER_Vehicle_Access,
+        SUMMER_Parking_Available_On_site: true,
+        Summer_Gear_Carts_at_Parking: false,
+        SUMMER_Outdoor_Fire_Ring: true,
+        SUMMER_Water_Cistern_not_potable_on_site: true,
+        SUMMER_Water_Running_potable_on_site: false,
+        SUMMER_Water_None_bring_your_own_water: false,
+        SUMMER_Water_less_than_one_quarter_mi_to_Spring_stream_lake_non: false,
+        SUMMER_Water_greater_than_one_quarter_mi_to_Spring_stream_lake_: true,
+        FOOD_Guests_bring_prepare_their_own: true,
+        REFRIGERATION: false,
+        DISHES_POTS_PANS_UTENSILS_CLEANING_SUPPLIES: true,
+        BURNERS: hut.BURNERS,
+        OVEN: hut.OVEN,
+        GRILL: hut.GRILL,
+        GUESTS_MAY_BRING_OWN_GRILL_Restrictions_may_apply: true,
+        HEAT: hut.HEAT,
+        OUTHOUSE_With_covered_walkway: false,
+        OUTHOUSE_No_covered_walkway_walk_a_short_distance: true,
+        INDOOR_COMPOSTING_TOILET: false,
+        INDOOR_FLUSH_TOILET: false,
+        TOILET_PAPER_PROVIDED: true,
+        MATTRESSES_PROVIDED: true,
+        PILLOWS_PROVIDED: true,
+        SLEEPING_BAGS: hut.SLEEPING_BAGS,
+        GUESTS_CLEAN_HUT_OR_YURT_BEFORE_DEPARTURE:
+          hut.GUESTS_CLEAN_HUT_OR_YURT_BEFORE_DEPARTURE,
+        GUESTS_CARRY_OUT_THEIR_TRASH_Trashbags_provided:
+          hut.GUESTS_CARRY_OUT_THEIR_TRASH_Trashbags_provided,
+        LIGHTING: hut.LIGHTING,
+        SAUNA: hut.SAUNA,
+        ELECTRICAL_OUTLETS_FOR_GUEST_USE: hut.ELECTRICAL_OUTLETS_FOR_GUEST_USE,
+        PROPERTY_IS_ADA_COMPLIANT: hut.PROPERTY_IS_ADA_COMPLIANT
+      }));
+    },
     toggleInfoWindow: function(marker, idx) {
+      this.hut = marker;
       this.infoWindowPos = marker.position;
-      this.infoContent = marker.infoText;
-      //check if its the same marker that was selected if yes toggle
+      this.currentMidx = idx;
       if (this.currentMidx == idx) {
         this.infoWinOpen = !this.infoWinOpen;
       } else {
-        //if different marker set infowindow to open and reset current marker index
         this.infoWinOpen = true;
         this.currentMidx = idx;
-        console.log(this.markers.position);
       }
     }
   }
@@ -78,62 +159,9 @@ export default {
 </script>
 
 <style scoped>
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
 #map {
-  height: 100%;
-}
-/* Optional: Makes the sample page fill the window. */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-/* The location pointed to by the popup tip. */
-.popup-tip-anchor {
-  height: 0;
-  position: absolute;
-  /* The max width of the info window. */
-  width: 200px;
-}
-/* The bubble is anchored above the tip. */
-.popup-bubble-anchor {
-  position: absolute;
-  width: 100%;
-  bottom: 8px;
-  left: 0;
-}
-/* Draw the tip. */
-.popup-bubble-anchor::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* Center the tip horizontally. */
-  transform: translate(-50%, 0);
-  /* The tip is a https://css-tricks.com/snippets/css/css-triangle/ */
-  width: 0;
-  height: 0;
-  /* The tip is 8px high, and 12px wide. */
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 8px solid white;
-}
-/* The popup bubble itself. */
-.popup-bubble-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -100%);
-  /* Style the info window. */
-  background-color: white;
-  padding: 5px;
-  border-radius: 5px;
-  font-family: sans-serif;
-  overflow-y: auto;
-  max-height: 60px;
-  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.5);
+  height: 95vh;
+  width: 100vw;
 }
 </style>
 
