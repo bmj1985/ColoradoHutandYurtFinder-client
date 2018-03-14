@@ -17,6 +17,7 @@ export default {
   components: { HutInfo },
   data() {
     return {
+      pi: 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892,
       hutAPI_Url: 'https://coloradohutandyurtfinder.herokuapp.com/huts',
       huts: [],
       hut: {},
@@ -68,12 +69,8 @@ export default {
     parseHutLocation() {
       this.huts.map(hut => {
         if (hut.Location.length == 0) {
-          hut.Location = [
-            38.31 - 1.5 * Math.random(),
-            -102.04 - 1.5 * Math.random()
-          ];
+          hut.Location = [37 - 10 * Math.random(), -102 - 10 * Math.random()];
         }
-        console.log(hut);
       });
     },
     createMarkers() {

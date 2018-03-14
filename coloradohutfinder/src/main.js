@@ -4,6 +4,8 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import * as VueGoogleMaps from 'vue2-google-maps';
+import VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyCq9z8gxIZf32ABrf1zlGpNRpKV0aol1Ss',
@@ -23,7 +25,12 @@ import {
   VIcon,
   VGrid,
   VToolbar,
-  transitions
+  transitions,
+  VForm,
+  VTextField,
+  VSelect,
+  VCheckbox,
+  VSwitch
 } from 'vuetify';
 import '../node_modules/vuetify/src/stylus/app.styl';
 
@@ -37,10 +44,15 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
-    transitions
+    transitions,
+    VForm,
+    VTextField,
+    VSelect,
+    VCheckbox,
+    VSwitch
   },
   theme: {
-    primary: '#ee44aa',
+    primary: '#1976D2',
     secondary: '#424242',
     accent: '#82B1FF',
     error: '#FF5252',
