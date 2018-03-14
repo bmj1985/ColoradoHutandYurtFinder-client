@@ -1,13 +1,13 @@
 <template>
 <div>
   <ul>
-<li><p>{{hut.HutName}}</p></li>
-<li><p>{{hut.Description}}</p></li>
-<li><p><a :href="hut.Booking_Url">{{hut.Booking_Url}}</a></p></li>
-<li><p>{{hut.Description}}</p></li>
-<li><p>{{hut.Description}}</p></li>
-<li><p>{{hut.Description}}</p></li>
+<li><h2>{{hut.HutName}}</h2></li>
+<li><h2>Elevation: {{hut.Elevation}}</h2></li>
+<li><h2>Loc: {{hut.Location[0]}}, {{hut.Location[1]}}</h2></li>
+<li><h2>{{hut.Description}}</h2></li>
+<li><h2><a :href="hut.Booking_Url">{{hut.Booking_Url}}</a></h2></li>
 </ul>
+  <v-btn router-link to="dialog">Edit Hut</v-btn>
 </div>
 </template>
 

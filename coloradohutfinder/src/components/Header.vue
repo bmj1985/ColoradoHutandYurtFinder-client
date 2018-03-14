@@ -16,8 +16,7 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn router-link to="/">Home</v-btn>
-       <v-btn router-link to="edithuts">New Hut</v-btn>
-       <v-btn router-link to="dialog">Edit Current Hut</v-btn>
+       <v-btn router-link to="edithuts">Suggest a New Hut</v-btn>
        <v-btn>About</v-btn>
     </v-toolbar>
 </template>
