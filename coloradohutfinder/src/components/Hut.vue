@@ -61,9 +61,7 @@ export default {
     },
     mapHuts () {
       this.huts.map(hut => {
-        if ($route.params.id === hut.id) {
-          this.hut = hut
-        }
+        this.hut = hut
       })
     },
     parseHutLocation () {

@@ -73,7 +73,6 @@ export default {
       })
     },
     createMarkers () {
-      this.mapHuts()
       this.parseHutLocation()
       this.markers = this.huts.map(hut => ({
         position: {
