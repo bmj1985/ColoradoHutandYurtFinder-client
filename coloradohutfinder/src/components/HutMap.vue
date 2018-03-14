@@ -73,6 +73,7 @@ export default {
       })
     },
     createMarkers () {
+      this.mapHuts()
       this.parseHutLocation()
       this.markers = this.huts.map(hut => ({
         position: {
@@ -161,7 +162,6 @@ export default {
         .then(response => response.json())
         .then(response => {
           console.log(response)
-          this.getDataFromDatabase()
         })
         .catch(err => console.log('Request failed', err))
     }

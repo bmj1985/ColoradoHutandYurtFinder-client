@@ -18,8 +18,12 @@
       v-model="Elevation_Gain_From_Trailhead"
     ></v-text-field>
     <v-text-field
-      label="Location"
-      v-model="Location"
+      label="Longitutde"
+      v-model="Location[0]"
+    ></v-text-field>
+    <v-text-field
+      label="Latitude"
+      v-model="Location[1]"
     ></v-text-field>
     <v-text-field
       label="Distance_From_Trailhead"
