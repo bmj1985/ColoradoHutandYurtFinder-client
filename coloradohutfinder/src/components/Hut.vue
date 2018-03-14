@@ -2,9 +2,9 @@
   <div>
    <gmap-map id="map" :center="center" :zoom="8" :mapTypeId="mapTypeId" gestureHandling="cooperative">
         <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
-         <HutInfo :hut="hut" :deleteHut="deleteHut"/>
+         <HutInfo :hut="hut"/>
           </gmap-info-window>
-      <gmap-marker :key="i" v-for="(m,i) in markers" :position="m.position" :clickable="true" @click="toggleInfoWindow(m,i)">
+      <gmap-marker :position="m.position" :clickable="true">
       </gmap-marker>
     </gmap-map>
   </div>
@@ -13,10 +13,11 @@
 <script>
 import HutInfo from '@/components/HutInfo';
 export default {
-  name: 'HutMap',
+  name: 'Hut',
   components: { HutInfo },
   data() {
     return {
+      pi: 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892,
       hutAPI_Url: 'https://coloradohutandyurtfinder.herokuapp.com/huts',
       huts: [],
       hut: {},
@@ -62,7 +63,9 @@ export default {
     },
     mapHuts() {
       huts.map(hut => {
+          if($route.params.id === hut.id) {
         this.hut = hut;
+        }
       });
     },
     parseHutLocation() {
@@ -138,35 +141,7 @@ export default {
         ELECTRICAL_OUTLETS_FOR_GUEST_USE: hut.ELECTRICAL_OUTLETS_FOR_GUEST_USE,
         PROPERTY_IS_ADA_COMPLIANT: hut.PROPERTY_IS_ADA_COMPLIANT
       }));
-    },
-    toggleInfoWindow: function(marker, idx) {
-      this.hut = marker;
-      this.infoWindowPos = marker.position;
-      this.currentMidx = idx;
-      if (this.currentMidx == idx) {
-        this.infoWinOpen = !this.infoWinOpen;
-      } else {
-        this.infoWinOpen = true;
-        this.currentMidx = idx;
-      }
-    },
-     deleteHut(id) {
-     fetch('https://coloradohutandyurtfinder.herokuapp.com/huts/' + id, {
-          headers: new Headers({
-            'Content-Type': 'application/json'
-          }),
-          method: 'DELETE',
-          body: JSON.stringify({
-
-          })
-        })
-          .then(response => response.json())
-          .then(response => {
-            console.log(response)
-            this.getDataFromDatabase();
-          })
-          .catch(err => console.log('Request failed', err));
-      },
+    }
   }
 };
 </script>

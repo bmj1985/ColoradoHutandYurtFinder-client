@@ -5,17 +5,39 @@
 <li><h2>Elevation: {{hut.Elevation}}</h2></li>
 <li><h2>Loc: {{hut.Location[0]}}, {{hut.Location[1]}}</h2></li>
 <li><h2>{{hut.Description}}</h2></li>
+<li><h2>{{hut.id}}</h2></li>
 <li><h2><a :href="hut.Booking_Url">{{hut.Booking_Url}}</a></h2></li>
+
 </ul>
-  <v-btn router-link to="dialog">Edit Hut</v-btn>
+<div v-if="showDeleteConfirmation === false">
+  <v-btn @click="dialog =! dialog">Edit Hut</v-btn>
+  <v-btn @click="resetDelete">DELETE HUT</v-btn>
+  </div>
+  <div v-else-if="showDeleteConfirmation === true">
+    <v-btn  color="success" @click="showDeleteConfirmation =! showDeleteConfirmation">NO, I DO NOT WANT TO DELETE THIS HUT</v-btn>
+    <v-btn color="error" @click="deleteHut(hut.id)">YES, I'M SURE I WANT TO DELETE THIS HUT</v-btn>
+  </div>
+  <Dialog v-show="dialog === true"></Dialog>
 </div>
+
 </template>
 
 <script>
 export default {
   name: 'HutInfo',
-  props: ['hut'],
-  mounted() {},
-  methods: {}
-};
+  props: ['hut','deleteHut'],
+  data() {
+    return {
+      dialog: false,
+      deleteUrl: 'https://coloradohutandyurtfinder.herokuapp.com/huts/',
+      showDeleteConfirmation: false,
+    }
+  },
+  methods: {
+      resetDelete() {
+        this.showDeleteConfirmation =! this.showDeleteConfirmation;
+        setTimeout(() => { this.showDeleteConfirmation = false; }, 5000);
+      }
+      }
+    };
 </script>

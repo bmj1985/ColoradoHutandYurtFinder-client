@@ -30,7 +30,11 @@ import {
   VTextField,
   VSelect,
   VCheckbox,
-  VSwitch
+  VSwitch,
+  VDialog,
+  VCard,
+  VSubheader,
+  VDivider
 } from 'vuetify';
 import '../node_modules/vuetify/src/stylus/app.styl';
 
@@ -49,7 +53,11 @@ Vue.use(Vuetify, {
     VTextField,
     VSelect,
     VCheckbox,
-    VSwitch
+    VSwitch,
+    VDialog,
+    VCard,
+    VSubheader,
+    VDivider
   },
   theme: {
     primary: '#1976D2',
