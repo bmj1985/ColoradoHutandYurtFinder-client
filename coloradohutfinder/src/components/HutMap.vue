@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import HutInfo from '@/components/HutInfo';
+import HutInfo from '@/components/HutInfo'
 export default {
   name: 'HutMap',
   components: { HutInfo },
-  data() {
+  data () {
     return {
       hutAPI_Url: 'https://coloradohutandyurtfinder.herokuapp.com/huts',
       huts: [],
@@ -33,47 +33,47 @@ export default {
       },
       infoWinOpen: false,
       currentMidx: null,
-      //optional: offset infowindow so it visually sits nicely on top of our marker
+      // optional: offset infowindow so it visually sits nicely on top of our marker
       infoOptions: {
         pixelOffset: {
           width: 0,
           height: -35
         }
       }
-    };
+    }
   },
-  mounted() {
-    this.getDataFromDatabase();
+  mounted () {
+    this.getDataFromDatabase()
   },
   watch: {
-    huts(huts) {
+    huts (huts) {
       if (this.huts.length > 1) {
-        this.createMarkers();
+        this.createMarkers()
       }
     }
   },
   methods: {
-    getDataFromDatabase() {
+    getDataFromDatabase () {
       fetch(this.hutAPI_Url)
         .then(response => response.json())
         .then(response => {
-          this.huts = response.hutsAndYurts;
-        });
+          this.huts = response.hutsAndYurts
+        })
     },
-    mapHuts() {
-      huts.map(hut => {
-        this.hut = hut;
-      });
-    },
-    parseHutLocation() {
+    mapHuts () {
       this.huts.map(hut => {
-        if (hut.Location.length == 0) {
-          hut.Location = [40 - Math.random() * 3, -94.6 - Math.random() * 7.4];
-        }
-      });
+        this.hut = hut
+      })
     },
-    createMarkers() {
-      this.parseHutLocation();
+    parseHutLocation () {
+      this.huts.map(hut => {
+        if (hut.Location.length === 0) {
+          hut.Location = [40 - Math.random() * 3, -94.6 - Math.random() * 7.4]
+        }
+      })
+    },
+    createMarkers () {
+      this.parseHutLocation()
       this.markers = this.huts.map(hut => ({
         position: {
           lat: parseFloat(hut.Location[0]),
@@ -137,38 +137,36 @@ export default {
         SAUNA: hut.SAUNA,
         ELECTRICAL_OUTLETS_FOR_GUEST_USE: hut.ELECTRICAL_OUTLETS_FOR_GUEST_USE,
         PROPERTY_IS_ADA_COMPLIANT: hut.PROPERTY_IS_ADA_COMPLIANT
-      }));
+      }))
     },
-    toggleInfoWindow: function(marker, idx) {
-      this.hut = marker;
-      this.infoWindowPos = marker.position;
-      this.currentMidx = idx;
-      if (this.currentMidx == idx) {
-        this.infoWinOpen = !this.infoWinOpen;
+    toggleInfoWindow: (marker, idx) => {
+      this.hut = marker
+      this.infoWindowPos = marker.position
+      this.currentMidx = idx
+      if (this.currentMidx === idx) {
+        this.infoWinOpen = !this.infoWinOpen
       } else {
-        this.infoWinOpen = true;
-        this.currentMidx = idx;
+        this.infoWinOpen = true
+        this.currentMidx = idx
       }
     },
-     deleteHut(id) {
-     fetch('https://coloradohutandyurtfinder.herokuapp.com/huts/' + id, {
-          headers: new Headers({
-            'Content-Type': 'application/json'
-          }),
-          method: 'DELETE',
-          body: JSON.stringify({
-
-          })
+    deleteHut (id) {
+      fetch('https://coloradohutandyurtfinder.herokuapp.com/huts/' + id, {
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        method: 'DELETE',
+        body: JSON.stringify({})
+      })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response)
+          this.getDataFromDatabase()
         })
-          .then(response => response.json())
-          .then(response => {
-            console.log(response)
-            this.getDataFromDatabase();
-          })
-          .catch(err => console.log('Request failed', err));
-      },
+        .catch(err => console.log('Request failed', err))
+    }
   }
-};
+}
 </script>
 
 <style scoped>

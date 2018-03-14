@@ -60,9 +60,9 @@
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      dialog: true
-    })
-  }
+export default {
+  data: () => ({
+    dialog: true
+  })
+}
 </script>

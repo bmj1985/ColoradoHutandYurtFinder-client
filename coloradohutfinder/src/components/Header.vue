@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       clipped: false,
       drawer: true,
@@ -33,12 +33,8 @@ export default {
       miniVariant: false,
       right: true,
       title: 'Colorado Hut and Yurt Finder'
-    };
+    }
   },
   name: 'Header'
-};
+}
 </script>
-<style scoped>
-
-</style>
-

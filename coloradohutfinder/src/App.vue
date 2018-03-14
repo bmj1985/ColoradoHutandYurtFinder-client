@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header'
+import Sidebar from '@/components/Sidebar'
 export default {
   components: { Header, Sidebar },
-  data() {
+  data () {
     return {
       clipped: false,
       drawer: true,
@@ -32,10 +32,10 @@ export default {
       right: true,
       title: 'Colorado Hut and Yurt Finder',
       newHut: false
-    };
+    }
   },
   name: 'App'
-};
+}
 </script>
 <style scoped>
 router-view {

@@ -1,5 +1,5 @@
 <template>
-<div id="hutform">
+<div id="edithut">
   <v-form v-model="valid" ref="form" lazy-validation>
     <v-text-field
       label="Hut Name"
@@ -55,7 +55,7 @@
     ></v-text-field>
     <v-select
       label="Season's Open"
-      v-model="Seasons_Open"
+      v-model="select"
       :items="Seasons_Open"
     ></v-select>
     <p>Season's Open</p>
@@ -114,14 +114,14 @@
 </template>
 <script>
 export default {
-  name: 'HutForm',
+  name: "HutForm",
   data: () => ({
     postUrl: 'https://coloradohutandyurtfinder.herokuapp.com/huts',
     HutName: '',
     Elevation: 0,
     Trailhead_Elevation: 0,
     Elevation_Gain_From_Trailhead: 0,
-    Location: [],
+    Location: [,],
     Distance_From_Trailhead: 0,
     Distance_From_Nearest_Hut: 0,
     Estimated_Time_In: 0,
@@ -158,7 +158,7 @@ export default {
     OVEN: '',
     GRILL: false,
     GUESTS_MAY_BRING_OWN_GRILL_Restrictions_may_apply: false,
-    HEAT: [],
+    HEAT: [''],
     OUTHOUSE_With_covered_walkway: false,
     OUTHOUSE_No_covered_walkway_walk_a_short_distance: false,
     INDOOR_COMPOSTING_TOILET: false,
@@ -174,10 +174,35 @@ export default {
     ELECTRICAL_OUTLETS_FOR_GUEST_USE: false,
     PROPERTY_IS_ADA_COMPLIANT: false,
     valid: true,
+    name: '',
+    nameRules: [
+      v => !!v || "Name is required",
+      v => (v && v.length <= 30) || "Name must be less than 10 characters"
+    ],
+    email: '',
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v =>
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+        'E-mail must be valid'
+    ],
+    numberRules: [
+      v => !!v || 'Number is required',
+      v => (v && typeof v === 'number') || 'Input must be a valid number'
+    ],
+    select: null,
+    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
     checkbox: false
   }),
+  watch: {
+    Single_Party_Bookings_Only() {
+      if ((Single_Party_Bookings_Only = !Single_Party_Bookings_Only)) {
+        this.toggleBookings();
+      }
+    }
+  },
   methods: {
-    post () {
+    post() {
       if (this.$refs.form.validate()) {
         // Native form submission is not yet supported
         fetch(this.postUrl, {
@@ -265,17 +290,17 @@ export default {
           .then(response => {
             this.clear()
           })
-          .catch(err => console.log('Request failed', err))
+          .catch(err => console.log("Request failed", err))
       }
     },
-    clear () {
+    clear() {
       this.$refs.form.reset()
     }
   }
 }
 </script>
 <style scoped>
-#hutform {
+#edithut {
   margin: 10vh;
   align-self: center;
   width: 60vw;

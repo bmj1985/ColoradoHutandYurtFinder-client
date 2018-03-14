@@ -4,8 +4,7 @@
 <li><h2>{{hut.HutName}}</h2></li>
 <li><h2>Elevation: {{hut.Elevation}}</h2></li>
 <li><h2>Loc: {{hut.Location[0]}}, {{hut.Location[1]}}</h2></li>
-<li><h2>{{hut.Description}}</h2></li>
-<li><h2>{{hut.id}}</h2></li>
+<li><h2>Description:{{hut.Description}}</h2></li>
 <li><h2><a :href="hut.Booking_Url">{{hut.Booking_Url}}</a></h2></li>
 
 </ul>
@@ -25,19 +24,21 @@
 <script>
 export default {
   name: 'HutInfo',
-  props: ['hut','deleteHut'],
-  data() {
+  props: ['hut', 'deleteHut'],
+  data () {
     return {
       dialog: false,
       deleteUrl: 'https://coloradohutandyurtfinder.herokuapp.com/huts/',
-      showDeleteConfirmation: false,
+      showDeleteConfirmation: false
     }
   },
   methods: {
-      resetDelete() {
-        this.showDeleteConfirmation =! this.showDeleteConfirmation;
-        setTimeout(() => { this.showDeleteConfirmation = false; }, 5000);
-      }
-      }
-    };
+    resetDelete () {
+      this.showDeleteConfirmation = !this.showDeleteConfirmation
+      setTimeout(() => {
+        this.showDeleteConfirmation = false
+      }, 5000)
+    }
+  }
+}
 </script>

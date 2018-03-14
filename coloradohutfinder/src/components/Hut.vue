@@ -11,18 +11,16 @@
 </template>
 
 <script>
-import HutInfo from '@/components/HutInfo';
+import HutInfo from '@/components/HutInfo'
 export default {
   name: 'Hut',
   components: { HutInfo },
-  data() {
+  data () {
     return {
-      pi: 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892,
       hutAPI_Url: 'https://coloradohutandyurtfinder.herokuapp.com/huts',
       huts: [],
       hut: {},
       mapTypeId: 'terrain',
-
       center: {
         lat: 39.3689,
         lng: -106.3868
@@ -34,49 +32,49 @@ export default {
       },
       infoWinOpen: false,
       currentMidx: null,
-      //optional: offset infowindow so it visually sits nicely on top of our marker
+      // optional: offset infowindow so it visually sits nicely on top of our marker
       infoOptions: {
         pixelOffset: {
           width: 0,
           height: -35
         }
       }
-    };
+    }
   },
-  mounted() {
-    this.getDataFromDatabase();
+  mounted () {
+    this.getDataFromDatabase()
   },
   watch: {
-    huts(huts) {
+    huts (huts) {
       if (this.huts.length > 1) {
-        this.createMarkers();
+        this.createMarkers()
       }
     }
   },
   methods: {
-    getDataFromDatabase() {
+    getDataFromDatabase () {
       fetch(this.hutAPI_Url)
         .then(response => response.json())
         .then(response => {
-          this.huts = response.hutsAndYurts;
-        });
+          this.huts = response.hutsAndYurts
+        })
     },
-    mapHuts() {
-      huts.map(hut => {
-          if($route.params.id === hut.id) {
-        this.hut = hut;
-        }
-      });
-    },
-    parseHutLocation() {
+    mapHuts () {
       this.huts.map(hut => {
-        if (hut.Location.length == 0) {
-          hut.Location = [40 - Math.random() * 3, -94.6 - Math.random() * 7.4];
+        if ($route.params.id === hut.id) {
+          this.hut = hut
         }
-      });
+      })
     },
-    createMarkers() {
-      this.parseHutLocation();
+    parseHutLocation () {
+      this.huts.map(hut => {
+        if (hut.Location.length === 0) {
+          hut.Location = [40 - Math.random() * 3, -94.6 - Math.random() * 7.4]
+        }
+      })
+    },
+    createMarkers () {
+      this.parseHutLocation()
       this.markers = this.huts.map(hut => ({
         position: {
           lat: parseFloat(hut.Location[0]),
@@ -140,10 +138,10 @@ export default {
         SAUNA: hut.SAUNA,
         ELECTRICAL_OUTLETS_FOR_GUEST_USE: hut.ELECTRICAL_OUTLETS_FOR_GUEST_USE,
         PROPERTY_IS_ADA_COMPLIANT: hut.PROPERTY_IS_ADA_COMPLIANT
-      }));
+      }))
     }
   }
-};
+}
 </script>
 
 <style scoped>
