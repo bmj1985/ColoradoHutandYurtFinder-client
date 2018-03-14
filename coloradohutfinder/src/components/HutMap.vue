@@ -1,6 +1,6 @@
 <template>
   <div>
-   <gmap-map id="map" :center="center" :zoom="9" :mapTypeId="mapTypeId" gestureHandling="cooperative">
+   <gmap-map id="map" :center="center" :zoom="8" :mapTypeId="mapTypeId" gestureHandling="cooperative">
         <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
          <HutInfo :hut="hut"/>
           </gmap-info-window>
@@ -69,7 +69,7 @@ export default {
     parseHutLocation() {
       this.huts.map(hut => {
         if (hut.Location.length == 0) {
-          hut.Location = [37 - 10 * Math.random(), -102 - 10 * Math.random()];
+          hut.Location = [40 - Math.random() * 3, -94.6 - Math.random() * 7.4];
         }
       });
     },
