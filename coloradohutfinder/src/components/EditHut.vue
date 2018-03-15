@@ -72,7 +72,7 @@
       :label="`Single Party Bookings Only: ${Single_Party_Bookings_Only.toString()}`"
       v-model="Single_Party_Bookings_Only"
     ></v-switch>
-    <v-switch 
+    <v-switch>
       :label="`Available to multiple groups: ${Multiple_Groups_Can_Book.toString()}`"
       v-model="Multiple_Groups_Can_Book"
     ></v-switch>

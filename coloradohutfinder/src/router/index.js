@@ -4,7 +4,6 @@ import HutMap from '@/components/HutMap'
 import HutForm from '@/components/HutForm'
 import Sidebar from '@/components/Sidebar'
 import Dialog from '@/components/Dialog'
-import Hut from '@/components/Hut'
 
 Vue.use(Router)
 
@@ -31,10 +30,6 @@ export default new Router({
       name: 'Dialog',
       component: Dialog,
       HutMap
-    },
-    {
-      path: '/:id',
-      component: Hut
     }
   ]
 })
