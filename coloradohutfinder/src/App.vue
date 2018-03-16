@@ -2,7 +2,7 @@
   <v-app>
     <Sidebar/>
     <Header/>
-      <router-view></router-view>
+      <router-view :huts="huts"></router-view>
     <v-footer :fixed="fixed" app>
       <span id="copyright">&copy; 2018 Brandon Johnson</span>
       <span><ul class="linkwrapper">
@@ -16,9 +16,14 @@
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
 export default {
+  name: 'App',
   components: { Header, Sidebar },
   data () {
     return {
+      hutAPI_Url: window.location.hostname === 'localhost'
+  ? 'http://localhost:3000/api/v1/huts'
+  : 'https://coloradohutfinder.herokuapp.com/api/v1/huts',
+      huts: [],
       clipped: false,
       drawer: true,
       fixed: false,
@@ -34,7 +39,18 @@ export default {
       newHut: false
     }
   },
-  name: 'App'
+  mounted () {
+    this.getDataFromDatabase()
+  },
+  methods: {
+    getDataFromDatabase () {
+      fetch(this.hutAPI_Url)
+        .then(response => response.json())
+        .then(response => {
+          this.huts = response.hutsAndYurts
+        })
+    }
+  }
 }
 </script>
 <style scoped>

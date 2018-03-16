@@ -17,7 +17,7 @@
       <v-spacer></v-spacer>
       <v-btn router-link to="/">Home</v-btn>
       <!-- <v-btn router-link to="/dialog">Dialog</v-btn> -->
-       <v-btn router-link to="edithuts">Suggest a New Hut</v-btn>
+       <v-btn router-link to="createhut">Add Hut</v-btn>
 
        <v-btn>About</v-btn>
     </v-toolbar>

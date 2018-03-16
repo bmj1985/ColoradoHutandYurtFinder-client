@@ -4,6 +4,7 @@ import HutMap from '@/components/HutMap'
 import HutForm from '@/components/HutForm'
 import Sidebar from '@/components/Sidebar'
 import Dialog from '@/components/Dialog'
+import EditHut from '@/components/EditHut'
 
 Vue.use(Router)
 
@@ -15,9 +16,15 @@ export default new Router({
       component: HutMap
     },
     {
-      path: '/edithuts',
+      path: '/createhut',
       name: 'HutForm',
       component: HutForm
+    },
+    {
+      path: '/edithuts',
+      name: 'EditHut',
+      component: EditHut,
+      props: true
     },
     {
       path: '/hutselector',
