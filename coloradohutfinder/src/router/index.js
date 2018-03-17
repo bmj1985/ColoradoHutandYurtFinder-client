@@ -21,7 +21,7 @@ export default new Router({
       component: HutForm
     },
     {
-      path: '/edithuts',
+      path: '/edithuts/:id',
       name: 'EditHut',
       component: EditHut,
       props: true

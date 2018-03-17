@@ -10,7 +10,7 @@
 <div v-if="showDeleteConfirmation === false">
   <!-- <Dialog></Dialog> -->
   <v-btn @click="resetDelete">DELETE HUT</v-btn>
-  <v-btn router-link :to="{name: 'EditHut', params: { hut } }">EDIT HUT</v-btn>  
+  <v-btn router-link :to="{name: 'EditHut', params: { id: hut.id } }">EDIT HUT</v-btn>  
   </div>
   <div v-else-if="showDeleteConfirmation === true">
     <v-btn  color="success" @click="showDeleteConfirmation =! showDeleteConfirmation">NO, I DO NOT WANT TO DELETE THIS HUT</v-btn>
