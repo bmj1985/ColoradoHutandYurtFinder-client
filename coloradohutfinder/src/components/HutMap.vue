@@ -161,7 +161,8 @@ export default {
 
 <style scoped>
 #map {
-  height: 95vh;
+  margin-top: 8vh;
+  height: 90vh;
   width: 100vw;
 }
 </style>

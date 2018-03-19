@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="editwrapper">
 <div id="edithut">
   <v-form id="edithutform" ref="form">
     <v-text-field
@@ -344,7 +344,7 @@ export default {
   })
     .then(response => response.json())
     .then(response => {
-      this.$route.router.go('/');
+      this.$router.push({ name: "HutMap"})
     })
     .catch(err => console.log('Request failed', err))
 }
@@ -352,14 +352,18 @@ export default {
 }
 </script>
 <style scoped>
+#editwrapper {
+  display: flex;
+  justify-content: center;
+}
 #edithut {
-  margin: 20vh;
+  align-self: center;
+  margin: 10vh auto auto auto;
   padding: 10vh;
   align-self: center;
   width: 60vw;
 }
 #edithutform {
-
   justify-content: space-around;
   width: 50vw;
 }

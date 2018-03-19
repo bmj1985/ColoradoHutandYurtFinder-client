@@ -1,6 +1,7 @@
 <template>
-<div id="hutform">
-  <v-form v-model="valid" ref="form" lazy-validation>
+<div id="addhutwrapper">
+<div id="addhut">
+  <v-form id="addhutform" v-model="valid" ref="form" lazy-validation>
     <v-text-field
       label="Hut Name"
       v-model="HutName"
@@ -107,13 +108,14 @@
     </div>
 
     <v-btn
-      @click="post"
+      @click="addNewHut"
       :disabled="!valid"
     >
       submit
     </v-btn>
     <v-btn @click="clear">clear</v-btn>
   </v-form>
+  </div>
   </div>
 </template>
 <script>
@@ -181,7 +183,7 @@ export default {
     checkbox: false
   }),
   methods: {
-    post () {
+    addNewHut () {
       if (this.$refs.form.validate()) {
         // Native form submission is not yet supported
         fetch(this.postUrl, {
@@ -279,13 +281,18 @@ export default {
 }
 </script>
 <style scoped>
-#hutform {
-  margin: 10vh;
+#hutformwrapper {
+  display: flex;
+  justify-content: center;
+}
+#addhut {
+  align-self: center;
+  margin: 10vh auto auto auto;
+  padding: 10vh;
   align-self: center;
   width: 60vw;
 }
-v-form {
-  display: flex;
+#addhutform {
   justify-content: space-around;
   width: 50vw;
 }
