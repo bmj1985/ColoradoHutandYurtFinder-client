@@ -16,9 +16,12 @@ import HutInfo from '@/components/HutInfo'
 export default {
   name: 'HutMap',
   components: { HutInfo },
-  props: [ 'huts'],
+  props: ['huts'],
   data () {
     return {
+      hutAPI_Url: window.location.hostname === 'localhost'
+        ? 'http://localhost:3000/api/v1/huts/'
+        : 'https://coloradohutfinder.herokuapp.com/api/v1/huts/',
       hut: {},
       mapTypeId: 'terrain',
       center: {
@@ -118,10 +121,8 @@ export default {
         MATTRESSES_PROVIDED: true,
         PILLOWS_PROVIDED: true,
         SLEEPING_BAGS: hut.SLEEPING_BAGS,
-        GUESTS_CLEAN_HUT_OR_YURT_BEFORE_DEPARTURE:
-          hut.GUESTS_CLEAN_HUT_OR_YURT_BEFORE_DEPARTURE,
-        GUESTS_CARRY_OUT_THEIR_TRASH_Trashbags_provided:
-          hut.GUESTS_CARRY_OUT_THEIR_TRASH_Trashbags_provided,
+        GUESTS_CLEAN_HUT_OR_YURT_BEFORE_DEPARTURE: hut.GUESTS_CLEAN_HUT_OR_YURT_BEFORE_DEPARTURE,
+        GUESTS_CARRY_OUT_THEIR_TRASH_Trashbags_provided: hut.GUESTS_CARRY_OUT_THEIR_TRASH_Trashbags_provided,
         LIGHTING: hut.LIGHTING,
         SAUNA: hut.SAUNA,
         ELECTRICAL_OUTLETS_FOR_GUEST_USE: hut.ELECTRICAL_OUTLETS_FOR_GUEST_USE,
@@ -139,22 +140,21 @@ export default {
         this.currentMidx = idx
       }
     },
-     deleteHut (id) {
-     fetch ('https://coloradohutandyurtfinder.herokuapp.com/huts/' + id, {
-       headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-       method: 'DELETE',
-       body: JSON.stringify({
-       })
-     })
-          .then(response => response.json())
-          .then(response => {
-            console.log(response)
-            this.setData()
-          })
-          .catch(err => console.log('Request failed', err))
-     }
+    deleteHut (id) {
+      fetch(this.hutAPI_Url + id, {
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        method: 'DELETE',
+        body: JSON.stringify({})
+      })
+        .then(
+          setTimeout(() => {
+            this.$router.push({ name: 'HutMap' })
+          }, 6000)
+        )
+        .catch(err => console.log('Request failed', err))
+    }
   }
 }
 </script>

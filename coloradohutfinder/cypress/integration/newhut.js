@@ -12,7 +12,7 @@ describe('Page content', () => {
       .should('contain', '/createhut')
     // 1. Make sure the form starts empty
 
-    cy.get('[aria-label="Hut Name"]').type('Test Hut')
+    cy.get('[aria-label="Hut Name"]').type('Pyramid of Khufu')
 
     cy.get('[aria-label="Elevation"]').type('99999')
     cy.get('[aria-label="Trailhead_Elevation"]').type('99999')
@@ -23,7 +23,7 @@ describe('Page content', () => {
     cy.get('[aria-label="Distance_From_Nearest_Hut"]').type('99999')
     cy.get('[aria-label="Contact_Number"]').type('970-999-9999')
     cy.get('[aria-label="Description"]').type('Party central')
-    cy.get('[aria-label="Booking_Url"]').type('www.GreatPyramid.com')
+    cy.get('[aria-label="Booking_Url"]').type('http://www.thebanmappingproject.com/')
     cy.get('.input-group--selection-controls__ripple').should('have.length.of', 10)
     cy.get('.input-group--selection-controls__ripple').eq(0).click()
     cy.get('.input-group--selection-controls__ripple').eq(1).click()
@@ -35,6 +35,7 @@ describe('Page content', () => {
     cy.get('.input-group--selection-controls__ripple').eq(7).click()
     cy.get('.input-group--selection-controls__ripple').eq(8).click()
     cy.get('.input-group--selection-controls__ripple').eq(9).click()
+    cy.get('div').contains('submit').click()
 
     // cy
     //   .get('.job-form')

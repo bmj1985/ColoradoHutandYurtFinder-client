@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HutMap from '@/components/HutMap'
 import HutForm from '@/components/HutForm'
-import Dialog from '@/components/Dialog'
 import EditHut from '@/components/EditHut'
 
 Vue.use(Router)
