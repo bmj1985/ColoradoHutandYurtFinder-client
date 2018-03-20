@@ -270,6 +270,7 @@ export default {
             this.$router.push({ name: 'HutMap' })
           }, 4000)
         })
+        .then(Location.reload(true))
         .catch(err => console.log('Request failed', err))
     },
     clear () {
