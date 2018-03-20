@@ -1,6 +1,6 @@
 describe('Page content', () => {
   it('shows correct content', () => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3001/')
 
     // 1. Make sure new hut form opens
 
@@ -17,11 +17,24 @@ describe('Page content', () => {
     cy.get('[aria-label="Elevation"]').type('99999')
     cy.get('[aria-label="Trailhead_Elevation"]').type('99999')
     cy.get('[aria-label="Elevation_Gain_From_Trailhead"]').type('99999')
-    cy.get('[aria-label="Longitude"]').type('0')
-    cy.get('[aria-label="Latitude"]').type('0')
+    cy.get('[aria-label="Longitude"]').type('29.979331')
+    cy.get('[aria-label="Latitude"]').type('31.134176')
     cy.get('[aria-label="Distance_From_Trailhead"]').type('99999')
     cy.get('[aria-label="Distance_From_Nearest_Hut"]').type('99999')
     cy.get('[aria-label="Contact_Number"]').type('970-999-9999')
+    cy.get('[aria-label="Description"]').type('Party central')
+    cy.get('[aria-label="Booking_Url"]').type('www.GreatPyramid.com')
+    cy.get('.input-group--selection-controls__ripple').should('have.length.of', 10)
+    cy.get('.input-group--selection-controls__ripple').eq(0).click()
+    cy.get('.input-group--selection-controls__ripple').eq(1).click()
+    cy.get('.input-group--selection-controls__ripple').eq(2).click()
+    cy.get('.input-group--selection-controls__ripple').eq(3).click()
+    cy.get('.input-group--selection-controls__ripple').eq(4).click()
+    cy.get('.input-group--selection-controls__ripple').eq(5).click()
+    cy.get('.input-group--selection-controls__ripple').eq(6).click()
+    cy.get('.input-group--selection-controls__ripple').eq(7).click()
+    cy.get('.input-group--selection-controls__ripple').eq(8).click()
+    cy.get('.input-group--selection-controls__ripple').eq(9).click()
 
     // cy
     //   .get('.job-form')

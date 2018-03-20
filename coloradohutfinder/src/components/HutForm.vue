@@ -19,7 +19,7 @@
       v-model="Elevation_Gain_From_Trailhead"
     ></v-text-field>
     <v-text-field
-      label="Longitutde"
+      label="Longitude"
       v-model="Location[0]"
     ></v-text-field>
     <v-text-field
@@ -58,12 +58,6 @@
       label="Cost_Per_Person"
       v-model="Cost_Per_Person"
     ></v-text-field>
-    <v-select
-      label="Season's Open"
-      v-model="Seasons_Open"
-      :items="Seasons_Open"
-    ></v-select>
-    <p>Season's Open</p>
     <v-checkbox
       label="Open in Summer"
       v-model="Seasons_Open[0]"
