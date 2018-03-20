@@ -31,9 +31,9 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn router-link to="/">Home</v-btn>
+      <v-btn @click="getDataFromDatabase" router-link to="/">Home</v-btn>
        <v-btn router-link to="createhut">Add Hut</v-btn>
-       <v-btn>Log In</v-btn>
+       <v-btn router-link to="users">Log In</v-btn>
     </v-toolbar>
       <router-view id="router" :huts="huts"></router-view>
     <v-footer :fixed="fixed" app>

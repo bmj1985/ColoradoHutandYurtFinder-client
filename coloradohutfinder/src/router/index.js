@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HutMap from '@/components/HutMap'
 import HutForm from '@/components/HutForm'
 import EditHut from '@/components/EditHut'
+import Users from '@/components/Users'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/hutselector',
       name: 'SelectHuts',
       component: HutMap
+    },
+    {
+      path: '/users',
+      name: 'Users',
+      component: Users
     }
   ]
 })

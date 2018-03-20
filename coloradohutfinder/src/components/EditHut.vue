@@ -103,8 +103,8 @@
     >
       submit
     </v-btn>
-    <v-btn @click="clear">clear</v-btn>
   </v-form>
+    <p id="submissionconfirmation" v-model="submissionText">{{submissionText}}</p>
   </div>
   </div>
 </template>
@@ -175,7 +175,8 @@ export default {
       SAUNA: false,
       ELECTRICAL_OUTLETS_FOR_GUEST_USE: false,
       PROPERTY_IS_ADA_COMPLIANT: false,
-      checkbox: false
+      checkbox: false,
+      submissionText: ''
     }
   },
   watch: {
@@ -342,10 +343,20 @@ export default {
         })
       })
         .then(response => response.json())
-        .then(response => {
-          this.$router.push({ name: 'HutMap' })
+        .then(() => this.confirmSubmission())
+        .then(() => this.clear())
+        .then(() => {
+          setTimeout(() => {
+            this.$router.push({ name: 'HutMap' })
+          }, 4000)
         })
         .catch(err => console.log('Request failed', err))
+    },
+    clear () {
+      this.$refs.form.reset()
+    },
+    confirmSubmission () {
+      this.submissionText = 'Submission successful!'
     }
   }
 }
@@ -365,5 +376,11 @@ export default {
 #edithutform {
   justify-content: space-around;
   width: 50vw;
+}
+#submissionconfirmation {
+  margin: 1vh;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
 }
 </style>

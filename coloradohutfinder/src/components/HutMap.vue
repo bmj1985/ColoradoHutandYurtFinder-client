@@ -44,6 +44,9 @@ export default {
       }
     }
   },
+  mounted() {
+    this.createMarkers()
+  },
   watch: {
     huts (huts) {
       if (this.huts.length > 1) {
@@ -151,7 +154,7 @@ export default {
         .then(
           setTimeout(() => {
             this.$router.push({ name: 'HutMap' })
-          }, 6000)
+          }, 1000)
         )
         .catch(err => console.log('Request failed', err))
     }
