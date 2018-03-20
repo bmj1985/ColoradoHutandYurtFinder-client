@@ -19,7 +19,7 @@
       v-model="Elevation_Gain_From_Trailhead"
     ></v-text-field>
     <v-text-field
-      label="Longitutde"
+      label="Longitude"
       v-model="Longitude"
     ></v-text-field>
     <v-text-field
