@@ -1,11 +1,11 @@
 Welcome to The Colorado Hut and Yurt Finder
 
-Resources for gSchool graders:
-Deployed site: https://coloradohutandyurtfinder.firebaseapp.com/
-Deployed API Table 1: https://coloradohutfinder.herokuapp.com/api/v1/users
-Deployed API Table 2: https://coloradohutfinder.herokuapp.com/api/v1/huts
-Server-side Repo: https://github.com/bmj1985/ColoradoHutandYurtFinder-server
-Trello Board: https://trello.com/b/J917ZQZf/colorado-hut-and-yurt-finder
+* Resources for gSchool graders:
+* Deployed site: https://coloradohutandyurtfinder.firebaseapp.com/
+* Deployed API Table 1: https://coloradohutfinder.herokuapp.com/api/v1/users
+* Deployed API Table 2: https://coloradohutfinder.herokuapp.com/api/v1/huts
+* Server-side Repo: https://github.com/bmj1985/ColoradoHutandYurtFinder-server
+* Trello Board: https://trello.com/b/J917ZQZf/colorado-hut-and-yurt-finder
 
 Rubric
 ## API
