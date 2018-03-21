@@ -113,9 +113,7 @@ export default {
   name: 'EditHut',
   data () {
     return {
-      hutAPI_Url: window.location.hostname === 'localhost'
-        ? 'http://localhost:3000/api/v1/huts/'
-        : 'https://coloradohutfinder.herokuapp.com/api/v1/huts/',
+      hutAPI_Url: 'https://coloradohutfinder.herokuapp.com/api/v1/huts/',
       hut: {},
       valid: true,
       HutName: '',
@@ -262,6 +260,7 @@ export default {
       this.PROPERTY_IS_ADA_COMPLIANT = this.hut.PROPERTY_IS_ADA_COMPLIANT
     },
     editHut (id) {
+      console.log('apiUrl',this.hutAPI_Url + this.$route.params.id)
       fetch(this.hutAPI_Url + this.$route.params.id, {
         headers: new Headers({
           'Content-Type': 'application/json'
