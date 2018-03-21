@@ -178,7 +178,7 @@ export default {
     PROPERTY_IS_ADA_COMPLIANT: false,
     valid: true,
     checkbox: false,
-    submissionText: 'Test'
+    submissionText: ''
   }),
   methods: {
     addNewHut () {
