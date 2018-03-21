@@ -27,7 +27,7 @@ export default {
 		return {
 			userAPI_Url: window.location.hostname === 'localhost'
 				? 'http://localhost:3000/api/v1/users'
-				: 'https://coloradohutfinder.herokuapp.com/api/v1/users',
+				: 'https://coloradohutfinder.herokuapp.com/api/v1/users/',
 			users: [],
 		};
 	},
