@@ -52,7 +52,7 @@ export default {
     return {
       hutAPI_Url: window.location.hostname === 'localhost'
   ? 'http://localhost:3000/api/v1/huts'
-  : 'https://coloradohutfinder.herokuapp.com/api/v1/huts',
+  : 'https://coloradohutfinder.herokuapp.com/api/v1/huts/',
       huts: [],
       clipped: false,
       drawer: false,
