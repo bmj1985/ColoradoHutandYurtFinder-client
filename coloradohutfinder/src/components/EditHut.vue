@@ -260,7 +260,6 @@ export default {
       this.PROPERTY_IS_ADA_COMPLIANT = this.hut.PROPERTY_IS_ADA_COMPLIANT
     },
     editHut (id) {
-      console.log('apiUrl',this.hutAPI_Url + this.$route.params.id)
       fetch(this.hutAPI_Url + this.$route.params.id, {
         headers: new Headers({
           'Content-Type': 'application/json'
