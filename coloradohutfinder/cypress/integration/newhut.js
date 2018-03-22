@@ -1,6 +1,6 @@
 describe('Page content', () => {
   it('shows correct content', () => {
-    cy.visit('http://localhost:8080/')
+    cy.visit('https://coloradohutandyurtfinder.firebaseapp.com/#/')
 
     cy
       .get('div.btn__content')
