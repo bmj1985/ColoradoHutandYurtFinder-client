@@ -21,6 +21,7 @@
   </div>
   </template>
 <script>
+import hash from 'hash.js'
 export default {
 	name: 'Users',
 	data() {
@@ -39,8 +40,15 @@ export default {
 			fetch(this.userAPI_Url)
 				.then(response => response.json())
 				.then(response => {
-                    console.log(response)
-					this.users = response.hutsAndYurts
+          this.users = response.hutsAndYurts.map(user => {
+            return { id: user.id,
+                    user_name: hash.sha512().update(user.user_name).digest('hex'),
+                    email: hash.sha512().update(user.email).digest('hex'),
+                    password: hash.sha512().update(user.password).digest('hex'),
+                    password_hash_algorithm: hash.sha256().update(user.password_hash_algorithm).digest('hex'),
+                    password_salt: hash.sha512().update(user.password_salt).digest('hex'),
+                    }
+          })
 				})
 		},
 	},
