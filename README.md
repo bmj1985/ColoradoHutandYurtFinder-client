@@ -15,6 +15,7 @@ There is no central location to easily find condensed information on all of Colo
 ## User Experience
 
 ## Installation Instructions
+Fork, clone the repo. ```npm install``
 
 ## Technologies
 * Front-end: Vuejs, Vuetify, Google Maps API
