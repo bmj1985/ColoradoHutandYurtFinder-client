@@ -1,10 +1,10 @@
 # Colorado Hut and Yurt Finder
 Easily sort and find Colorado huts and yurts in a single-page full screen mapping application.
 
-[Deployed Frontend Link](https://coloradohutandyurtfinder.firebaseapp.com/)
-[Deployed Backend Link](https://coloradohutfinder.herokuapp.com/api/v1/)
-[Server-side Repo](https://github.com/bmj1985/ColoradoHutandYurtFinder-server)
-[Trello Board](https://trello.com/b/J917ZQZf/colorado-hut-and-yurt-finder)
+[Deployed Frontend Link](https://coloradohutandyurtfinder.firebaseapp.com/)<br>
+[Deployed Backend Link](https://coloradohutfinder.herokuapp.com/api/v1/)<br>
+[Server-side Repo](https://github.com/bmj1985/ColoradoHutandYurtFinder-server)<br>
+[Trello Board](https://trello.com/b/J917ZQZf/colorado-hut-and-yurt-finder)<br>
 
 ## App Description
 
