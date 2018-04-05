@@ -6,6 +6,10 @@ Easily sort and find Colorado huts and yurts in a single-page full screen mappin
 [Server-side Repo](https://github.com/bmj1985/ColoradoHutandYurtFinder-server)<br>
 [Trello Board](https://trello.com/b/J917ZQZf/colorado-hut-and-yurt-finder)<br>
 
+<div>
+<img src="./ColoradoHutandYurtFinderScreenShot.png"/>
+</div>
+
 ## App Description
 This is the beginnings of a comprehensive information and selection resource for finding huts and yurts in Colorado. Sorting functionality is coming soon.  Please feel free to update huts with more accurate information.
 
