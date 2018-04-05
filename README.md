@@ -16,6 +16,8 @@ There is no central location to easily find condensed information on all of Colo
 ## Installation Instructions
 
 ## Technologies
+* Front-end: Vuejs, Vuetify, Google Maps API
+* Back-end: Node, Express, Knex, PostgresQL
 
 ## Author
 Brandon Johnson - Full Stack Web Developer - Denver, Colorado
