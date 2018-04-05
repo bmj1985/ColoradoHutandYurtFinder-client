@@ -1,66 +1,28 @@
-Welcome to The Colorado Hut and Yurt Finder
+# Colorado Hut and Yurt Finder
+Easily sort and find Colorado huts and yurts in a single-page full screen mapping application.
 
-* Resources for gSchool graders:
-* Deployed site: https://coloradohutandyurtfinder.firebaseapp.com/
-* Deployed API Table 1: https://coloradohutfinder.herokuapp.com/api/v1/users
-* Deployed API Table 2: https://coloradohutfinder.herokuapp.com/api/v1/huts
-* Server-side Repo: https://github.com/bmj1985/ColoradoHutandYurtFinder-server
-* Trello Board: https://trello.com/b/J917ZQZf/colorado-hut-and-yurt-finder
+[Deployed Frontend Link](https://coloradohutandyurtfinder.firebaseapp.com/)
+[Deployed Backend Link](https://coloradohutfinder.herokuapp.com/api/v1/)
+[Server-side Repo](https://github.com/bmj1985/ColoradoHutandYurtFinder-server)
+[Trello Board](https://trello.com/b/J917ZQZf/colorado-hut-and-yurt-finder)
 
-Rubric
-## API
+## App Description
 
-* [ ] Deployed
-* [ ] Well-organized
-* [ ] Returns CORS headers
-* [ ] API returns sane status codes
+## Problem Statement
+There is no central location to easily find condensed information on all of Colorado's huts and yurts.  Huts.org has a map feature with great information, but it only takes up part of the screen and is difficult to use.  This site aims to remedy these issues as well as provide some additional sorting criteria.
 
-Can take the following actions:
+## User Experience
 
-### Table 1
+## Installation Instructions
 
-* [ ] List
-* [ ] Read
-* [ ] Create
-* [ ] Update
-* [ ] Delete
+## Technologies
 
-### Table 2
+## Author
+Brandon Johnson - Full Stack Web Developer - Denver, Colorado
 
-* [ ] List
-* [ ] Read
-* [ ] Create
-* [ ] Update
-* [ ] Delete
+[GitHub](https://github.com/bmj1985)
 
-### Database
+[LinkedIn](www.linkedin.com/in/bmj1985/)
 
-* [ ] Uses migrations
-* [ ] Uses seeds
-* [ ] Database is connected
-
-## Front-End
-
-* [ ] Deployed
-* [ ] Has at least two components
-* [ ] Includes at least two end-to-end tests
-* [ ] Integrates a non-trivial library
-* [ ] Appropriately styled
-
-### Model 1
-
-* [ ] List
-* [ ] Read
-* [ ] Create
-* [ ] Update
-* [ ] Delete
-
-### Model 2
-
-* [ ] List
-* [ ] Read
-* [ ] Create
-* [ ] Update
-* [ ] Delete
-
-
+## License
+MIT
