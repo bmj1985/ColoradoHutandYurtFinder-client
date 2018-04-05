@@ -5,12 +5,12 @@
       <v-card  v-for="user in users" :key="user.id">
         <v-toolbar color="teal" dark>
           <v-toolbar-side-icon></v-toolbar-side-icon>
-          <v-toolbar-title>{{user.user_name}}</v-toolbar-title>
+          <v-toolbar-title>{{user.user_name.split("").slice(0,10).join("")}}</v-toolbar-title>
         </v-toolbar>
         <v-list two-line subheader>
           <v-list-tile avatar>
             <v-list-tile-content>
-              <v-list-tile-title>{{user.email}}</v-list-tile-title>
+              <v-list-tile-title>{{user.email.split("").slice(0,10).join("")}}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
